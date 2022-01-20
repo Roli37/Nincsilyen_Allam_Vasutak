@@ -1,0 +1,135 @@
+﻿<Window x:Class="Nincsilyen_Allam_Vasutak.Views.AdminInterface"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nincsilyen_Allam_Vasutak.Views"
+        mc:Ignorable="d"
+        Title="AdminInterface" Height="480" Width="800">
+    <StackPanel>
+        <Label Content="Admin felület" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Name="label1"/>
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <Button Click="btn_varosmegjelenit_Click" Content="Városok megjelenítése" Name="btn_varosmegjelenit" Height="70" Margin="5" Background="Silver"/>
+                <StackPanel Height="auto" Margin="5" Background="Gray">
+                    <Label Content="Új város felvétele" HorizontalAlignment="Center" FontWeight="Bold"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="Város neve:" Margin="2"/>
+                            <TextBox Grid.Column="2" Margin="2" Name="tb_varosfelvetel"/>
+                        </Grid>
+                    <Button Click="btn_varoshozzaad_Click" Content="Hozzáad" Name="btn_varoshozzaad" Background="DimGray"/>
+                </StackPanel>
+                <StackPanel Height="auto" Margin="5" Background="Gray">
+                    <Label Content="Város módosítása" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="5" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" Content="Város régi neve:" Margin="2"/>
+                        <TextBox Grid.Column="2" Grid.Row="0" Margin="2" Name="tb_varosreginev"/>
+                        <Label Grid.Column="0" Grid.Row="2" Content="Város új neve:" Margin="2"/>
+                        <TextBox Grid.Column="2" Grid.Row="2" Margin="2" Name="tb_varosujnev"/>
+                    </Grid>
+                    <Button Click="btn_varosmodosit_Click" Content="Módosít" Name="btn_varosmodosit" Background="DimGray"/>
+                </StackPanel>
+                <StackPanel Height="auto" Margin="5" Background="Gray">
+                    <Label Content="Város törlése" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="Város neve:" Margin="2"/>
+                        <TextBox Grid.Column="2" Margin="2" Name="tb_varostorles"/>
+                    </Grid>
+                    <Button Click="btn_varostorles_Click" Content="Töröl" Name="btn_varostorles" Background="DimGray"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Column="4">
+                <Button Click="btn_jaratokmegjelenit_Click" Content="Járatok megjelenítése" Name="btn_jaratokmegjelenit" Height="70" Margin="5" Background="Silver"/>
+                <StackPanel Height="auto" Margin="5" Background="Gray">
+                    <Label Content="Új járat felvétele" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="5" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="5" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" Content="Honnan?" Margin="2"/>
+                        <TextBox Grid.Column="2" Grid.Row="0" Margin="2" Name="tb_ujjaratfrom"/>
+                        <Label Grid.Column="0" Grid.Row="2" Content="Hova?" Margin="2"/>
+                        <TextBox Grid.Column="2" Grid.Row="2" Margin="2" Name="tb_ujjaratto"/>
+                        <Label Grid.Column="0" Grid.Row="4" Content="Km?" Margin="2"/>
+                        <TextBox Grid.Column="2" Grid.Row="4" Margin="2" Name="tb_ujjaratkm"/>
+                    </Grid>
+                    <Button Click="btn_jarathozzaad_Click" Content="Hozzáad" Name="btn_jarathozzaad" Background="DimGray"/>
+                </StackPanel>
+                <StackPanel Height="auto" Margin="5" Background="Gray">
+                    <Label Content="Járat törlése" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="5" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="0" Content="Város neve:" Margin="2"/>
+                        <TextBox Grid.Column="2" Margin="2" Name="tb_jarattorlesfrom"/>
+                        <Label Grid.Column="0" Content="Város neve:" Margin="2"/>
+                        <TextBox Grid.Column="2" Margin="2" Name="tb_jarattorlesto"/>
+                    </Grid>
+                    <Button Click="btn_jarattorles_Click" Content="Töröl" Name="btn_jarattorles" Background="DimGray"/>
+                </StackPanel>
+                <Button Click="btn_kilep_Click" Content="Kilépés" Name="btn_kilep" Height="35" Margin="5" Background="Silver"/>
+            </StackPanel>
+            <Grid Grid.Column="2">
+                <DataGrid Visibility="Hidden" AutoGenerateColumns="False" CanUserAddRows="False" Name="dataGridVarosok" MaxHeight="330"  VerticalScrollBarVisibility="Auto">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Városok" Binding="{Binding Varosok}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <Grid Grid.Column="2">
+                <DataGrid Visibility="Hidden" AutoGenerateColumns="False" CanUserAddRows="False" Name="dataGridJaratok" MaxHeight="330"  VerticalScrollBarVisibility="Auto">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Honnan" Binding="{Binding From}" Width="*"/>
+                        <DataGridTextColumn Header="Hova" Binding="{Binding To}" Width="*"/>
+                        <DataGridTextColumn Header="Km" Binding="{Binding Km}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+
+    </StackPanel>
+</Window>
