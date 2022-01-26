@@ -11,9 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Nincsilyen_Allam_Vasutak.Views;
 
-namespace Nincsilyen_Allam_Vasutak.Views
+namespace VasuthalozatAdminApplication.Views
 {
     /// <summary>
     /// Interaction logic for AdminInterface.xaml
@@ -24,21 +23,19 @@ namespace Nincsilyen_Allam_Vasutak.Views
         {
             InitializeComponent();
         }
+
         private void btn_varosmegjelenit_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
         private void btn_varoshozzaad_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
         private void btn_varosmodosit_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
         private void btn_varostorles_Click(object sender, RoutedEventArgs e)
         {
 
@@ -48,20 +45,19 @@ namespace Nincsilyen_Allam_Vasutak.Views
         {
 
         }
-
         private void btn_jarathozzaad_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
         private void btn_jarattorles_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
         private void btn_kilep_Click(object sender, RoutedEventArgs e)
         {
+            AdminLogin adminLogin = new AdminLogin();
             this.Close();
+            adminLogin.Show();
         }
     }
 }

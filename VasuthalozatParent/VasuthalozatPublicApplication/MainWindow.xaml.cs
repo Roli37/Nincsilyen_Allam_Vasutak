@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Nincsilyen_Allam_Vasutak.Views;
+using VasuthalozatPublicApplication.Views;
 
-namespace Nincsilyen_Allam_Vasutak
+namespace VasuthalozatPublicApplication
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,14 +23,9 @@ namespace Nincsilyen_Allam_Vasutak
     {
         public MainWindow()
         {
-            InitializeComponent();
-        }
-
-        private void btn_vagjunkbele_Click(object sender, RoutedEventArgs e)
-        {
-            SignUp signUp = new SignUp();
-            this.Close();
-            signUp.Show();
+            //InitializeComponent();
+            LogIn login = new LogIn();
+            login.Show();
         }
     }
 }

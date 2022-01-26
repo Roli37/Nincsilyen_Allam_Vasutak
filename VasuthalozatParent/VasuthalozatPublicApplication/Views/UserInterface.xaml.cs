@@ -11,25 +11,29 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Nincsilyen_Allam_Vasutak.Views;
 
-namespace Nincsilyen_Allam_Vasutak.Views
+namespace VasuthalozatPublicApplication.Views
 {
     /// <summary>
-    /// Interaction logic for SignUp.xaml
+    /// Interaction logic for UserInterface.xaml
     /// </summary>
-    public partial class SignUp : Window
+    public partial class UserInterface : Window
     {
-        public SignUp()
+        public UserInterface()
         {
             InitializeComponent();
         }
 
-        private void btn_signup_Click(object sender, RoutedEventArgs e)
+        private void btn_kereses_Click(object sender, RoutedEventArgs e)
         {
-            UserInterface userInterface = new UserInterface();
+
+        }
+
+        private void btn_logout_Click(object sender, RoutedEventArgs e)
+        {
+            LogIn logIn = new LogIn();
             this.Close();
-            userInterface.Show();
+            logIn.Show();
         }
     }
 }

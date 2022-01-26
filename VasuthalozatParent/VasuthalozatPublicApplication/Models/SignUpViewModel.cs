@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nincsilyen_Allam_Vasutak.Models
+namespace VasuthalozatPublicApplication.Models
 {
-    class UserInterfaceViewModel
+    class SignUpViewModel
     {
     }
 }

@@ -11,31 +11,26 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Nincsilyen_Allam_Vasutak.Views;
 
-namespace Nincsilyen_Allam_Vasutak.Views
+namespace VasuthalozatAdminApplication.Views
 {
     /// <summary>
-    /// Interaction logic for AdminRedirect.xaml
+    /// Interaction logic for AdminLogin.xaml
     /// </summary>
-    public partial class AdminRedirect : Window
+    public partial class AdminLogin : Window
     {
-        public AdminRedirect()
+        public AdminLogin()
         {
             InitializeComponent();
         }
 
-        private void btn_go_Click(object sender, RoutedEventArgs e)
+        private void btn_adminlogin_Click(object sender, RoutedEventArgs e)
         {
-            if (tb_code.Text == "yQy^<YGkq{42b>}v")
+            if (tb_adminname.Text == "Admin1" && tb_password.Text == "Admin1PW")
             {
-                AdminLogin adminLogin = new AdminLogin();
+                AdminInterface adminInterface = new AdminInterface();
                 this.Close();
-                adminLogin.Show();
-            }
-            else
-            {
-                //Wrong code
+                adminInterface.Show();
             }
         }
     }
