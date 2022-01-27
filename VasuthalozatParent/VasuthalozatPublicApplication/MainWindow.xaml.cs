@@ -23,9 +23,6 @@ namespace VasuthalozatPublicApplication
     {
         public MainWindow()
         {
-            //InitializeComponent();
-            LogIn login = new LogIn();
-            login.Show();
         }
     }
 }
