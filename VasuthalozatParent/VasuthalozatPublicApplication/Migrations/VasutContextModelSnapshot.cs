@@ -790,6 +790,26 @@ namespace VasuthalozatPublicApplication.Migrations
                         });
                 });
 
+            modelBuilder.Entity("VasuthalozatPublicApplication.Entities.User", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("VasuthalozatPublicApplication.Entities.Railway", b =>
                 {
                     b.HasOne("VasuthalozatPublicApplication.Entities.City", "From")

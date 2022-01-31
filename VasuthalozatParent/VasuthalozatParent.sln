@@ -12,10 +12,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VasuthalozatPublicApplication", "VasuthalozatPublicApplication\VasuthalozatPublicApplication.csproj", "{93719151-F3AE-4EAE-80E6-E190F9F925F3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{98FCE268-C8B2-4E5E-9288-2572DDC13B16}"
-	ProjectSection(SolutionItems) = preProject
-		VasuthalozatPublicApplication\bin\Debug\cities.txt = VasuthalozatPublicApplication\bin\Debug\cities.txt
-		VasuthalozatPublicApplication\bin\Debug\railways.txt = VasuthalozatPublicApplication\bin\Debug\railways.txt
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

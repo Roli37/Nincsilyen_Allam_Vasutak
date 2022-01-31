@@ -12,6 +12,7 @@ namespace VasuthalozatPublicApplication.Entities
     {
         public DbSet<City> Cities { get; set; }
         public DbSet<Railway> Railways { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

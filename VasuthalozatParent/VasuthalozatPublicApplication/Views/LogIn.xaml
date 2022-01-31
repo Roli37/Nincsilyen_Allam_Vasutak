@@ -31,5 +31,6 @@
             </StackPanel>
             <Button Click="btn_login_Click" Content="Belépés!" Name="btn_login" Margin="5, 10, 5, 5" Background="DimGray"/>
         </StackPanel>
+        <Button Click="btn_signup_Click" Content="Még nincs fiókod? Regisztráció!" Name="btn_signup" Margin="5,0" FontSize="10" Width="auto" HorizontalAlignment="Left"/>
     </StackPanel>
 </Window>

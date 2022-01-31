@@ -8,7 +8,7 @@ using VasuthalozatPublicApplication.Entities;
 namespace VasuthalozatPublicApplication.Migrations
 {
     [DbContext(typeof(VasutContext))]
-    [Migration("20220127153616_Initial_Migration")]
+    [Migration("20220131184006_Initial_Migration")]
     partial class Initial_Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -790,6 +790,26 @@ namespace VasuthalozatPublicApplication.Migrations
                             Km = 99,
                             ToID = 19
                         });
+                });
+
+            modelBuilder.Entity("VasuthalozatPublicApplication.Entities.User", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("VasuthalozatPublicApplication.Entities.Railway", b =>
