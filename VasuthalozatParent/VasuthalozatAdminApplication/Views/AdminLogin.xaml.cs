@@ -32,6 +32,12 @@ namespace VasuthalozatAdminApplication.Views
                 this.Close();
                 adminInterface.Show();
             }
+            else
+            {
+                string message = "Ellenőrizd az adatokat!";
+                string title = "Warning";
+                MessageBox.Show(message, title);
+            }
         }
     }
 }

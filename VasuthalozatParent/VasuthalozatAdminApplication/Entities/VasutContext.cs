@@ -6,36 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VasuthalozatPublicApplication.Entities
+namespace VasuthalozatAdminApplication.Entities
 {
     public class VasutContext : DbContext
     {
         public DbSet<City> Cities { get; set; }
         public DbSet<Railway> Railways { get; set; }
         public DbSet<User> Users { get; set; }
-
-        //public VasutContext(DbContextOptions<VasutContext> options) : base(options)
-        //{
-        //    Database.EnsureCreated();
-        //}
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Railway>().HasOne(x => x.From);
-            modelBuilder.Entity<Railway>().HasOne(x => x.To);
-
-            List<City> cities = ReadFiles.ReadCities();
-            foreach (City city in cities)
-            {
-                modelBuilder.Entity<City>().HasData(city);
-            }
-
-            List<Railway> railways = ReadFiles.ReadRailways(cities);
-            foreach (Railway railway in railways)
-            {
-                modelBuilder.Entity<Railway>().HasData(railway);
-            }
-        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
