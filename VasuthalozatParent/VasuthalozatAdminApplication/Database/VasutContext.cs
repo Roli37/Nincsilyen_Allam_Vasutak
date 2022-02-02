@@ -1,18 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using VasuthalozatAdminApplication.Entities;
 
-namespace VasuthalozatAdminApplication.Entities
+namespace VasuthalozatAdminApplication.Database
 {
     public class VasutContext : DbContext
     {
         public DbSet<City> Cities { get; set; }
         public DbSet<Railway> Railways { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Foglalas> Foglalasok { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VasuthalozatPublicApplication.Entities;
+using VasuthalozatPublicApplication.Database;
 
 namespace VasuthalozatPublicApplication.Migrations
 {
@@ -132,6 +132,27 @@ namespace VasuthalozatPublicApplication.Migrations
                             ID = 20,
                             Name = "Kalilangan"
                         });
+                });
+
+            modelBuilder.Entity("VasuthalozatPublicApplication.Entities.Foglalas", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("RailwayID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("RailwayID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("Foglalasok");
                 });
 
             modelBuilder.Entity("VasuthalozatPublicApplication.Entities.Railway", b =>
@@ -808,6 +829,25 @@ namespace VasuthalozatPublicApplication.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("VasuthalozatPublicApplication.Entities.Foglalas", b =>
+                {
+                    b.HasOne("VasuthalozatPublicApplication.Entities.Railway", "Railway")
+                        .WithMany()
+                        .HasForeignKey("RailwayID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VasuthalozatPublicApplication.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Railway");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("VasuthalozatPublicApplication.Entities.Railway", b =>

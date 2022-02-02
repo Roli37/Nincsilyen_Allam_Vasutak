@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VasuthalozatPublicApplication.Views"
         mc:Ignorable="d"
-        Title="SignUp" Height="250" Width="320">
+        Title="SignUp" Height="230" Width="320">
     <StackPanel>
         <StackPanel Height="auto" Margin="5" Background="Gray">
             <Label Content="Regisztráció" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
@@ -26,7 +26,7 @@
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Content="Jelszó:" Margin="2"/>
-                    <TextBox Grid.Column="2" Margin="2" Name="tb_password"/>
+                    <PasswordBox Grid.Column="2" Margin="2" Name="pb_password"/>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -35,7 +35,7 @@
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Content="Jelszó megerősítése:" Margin="2"/>
-                    <TextBox Grid.Column="2" Margin="2" Name="tb_password_conf"/>
+                    <PasswordBox Grid.Column="2" Margin="2" Name="pb_password_conf"/>
                 </Grid>
             </StackPanel>
             <Button Click="btn_signup_Click" Content="Regisztráljunk!" Name="btn_signup" Margin="5, 10, 5, 5" Background="DimGray"/>

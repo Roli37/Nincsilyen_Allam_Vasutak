@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using VasuthalozatAdminApplication.Entities;
+using VasuthalozatAdminApplication.Database;
+using VasuthalozatAdminApplication.Models;
 
 namespace VasuthalozatAdminApplication.Views
 {
@@ -24,6 +26,65 @@ namespace VasuthalozatAdminApplication.Views
         public AdminInterface()
         {
             InitializeComponent();
+            DataSources();
+        }
+        public AdminInterface(VasutContext vasutContext)
+        {
+            _vasutContext = vasutContext;
+        }
+
+        private readonly VasutContext _vasutContext = new VasutContext();
+
+        private void btn_varosmegjelenit_Click(object sender, RoutedEventArgs e)
+        {
+            
+            dataGridVarosok.ItemsSource = Cities();
+            dataGridVarosok.Visibility = Visibility.Visible;
+        }
+        private void btn_varoshozzaad_Click(object sender, RoutedEventArgs e)
+        {
+            string cityname = tb_varosfelvetel.Text;
+            AdminInterfaceViewModel.PostVaros(cityname);
+        }
+        private void btn_varosmodosit_Click(object sender, RoutedEventArgs e)
+        {
+            string oldcity = cb_varosreginev.Text;
+            string newcity = tb_varosujnev.Text;
+            AdminInterfaceViewModel.UpdateVaros(newcity, oldcity);
+        }
+        private void btn_varostorles_Click(object sender, RoutedEventArgs e)
+        {
+            string city = cb_varostorles.Text;
+            AdminInterfaceViewModel.DeleteVaros(city, Cities());
+        }
+
+        private void btn_jaratokmegjelenit_Click(object sender, RoutedEventArgs e)
+        {
+            List<Railway> railways = Railways();
+            dataGridJaratok.ItemsSource = railways;
+            dataGridJaratok.Visibility = Visibility.Visible;
+
+        }
+        private void btn_jarathozzaad_Click(object sender, RoutedEventArgs e)
+        {
+            string cityfrom = cb_ujjaratfrom.Text;
+            string cityto = cb_ujjaratto.Text;
+            int km = int.Parse(tb_ujjaratkm.Text);
+            AdminInterfaceViewModel.PostJarat(cityfrom, cityto, km, Cities());
+        }
+        private void btn_jarattorles_Click(object sender, RoutedEventArgs e)
+        {
+            string cityfrom = cb_jarattorlesfrom.Text;
+            string cityto = cb_jarattorlesto.Text;
+            AdminInterfaceViewModel.DeleteJarat(cityfrom, cityto, Cities());
+        }
+
+        private void btn_kilep_Click(object sender, RoutedEventArgs e)
+        {
+            AdminInterfaceViewModel.LogOut(this);
+        }
+        public void DataSources()
+        {
             cb_varosreginev.ItemsSource = Cities().Select(x => x.Name);
             cb_varostorles.ItemsSource = Cities().Select(x => x.Name);
             cb_ujjaratfrom.ItemsSource = Cities().Select(x => x.Name);
@@ -31,11 +92,7 @@ namespace VasuthalozatAdminApplication.Views
             cb_jarattorlesfrom.ItemsSource = Cities().Select(x => x.Name);
             cb_jarattorlesto.ItemsSource = Cities().Select(x => x.Name);
         }
-        private readonly VasutContext _vasutContext = new VasutContext();
-        public AdminInterface(VasutContext vasutContext)
-        {
-            _vasutContext = vasutContext;
-        }
+
         public List<City> Cities()
         {
             //var command = Connection.OpenConnection().CreateCommand();
@@ -76,122 +133,6 @@ namespace VasuthalozatAdminApplication.Views
             //}
             List<Railway> railways = _vasutContext.Railways.ToList();
             return railways;
-        }
-        private void btn_varosmegjelenit_Click(object sender, RoutedEventArgs e)
-        {
-            
-            dataGridVarosok.ItemsSource = Cities();
-            dataGridVarosok.Visibility = Visibility.Visible;
-        }
-        private void btn_varoshozzaad_Click(object sender, RoutedEventArgs e)
-        {
-            string cityname = tb_varosfelvetel.Text;
-            var command = Connection.OpenConnection().CreateCommand();
-            command.CommandType = CommandType.Text;
-            command.CommandText = "INSERT INTO cities(Name) VALUES(@name)";
-
-            var param = command.CreateParameter();
-            param.ParameterName = "@name";
-            param.Value = cityname;
-            command.Parameters.Add(param);
-            command.ExecuteNonQuery();
-        }
-        private void btn_varosmodosit_Click(object sender, RoutedEventArgs e)
-        {
-            string oldcity = cb_varosreginev.Text;
-            string newcity = tb_varosujnev.Text;
-            var command = Connection.OpenConnection().CreateCommand();
-            command.CommandType = CommandType.Text;
-            command.CommandText = "UPDATE cities SET Name = @new WHERE Name = @old";
-
-            var param1 = command.CreateParameter();
-            param1.ParameterName = "@new";
-            param1.Value = newcity;
-            command.Parameters.Add(param1);
-
-            var param2 = command.CreateParameter();
-            param2.ParameterName = "@old";
-            param2.Value = oldcity;
-            command.Parameters.Add(param2);
-
-            command.ExecuteNonQuery();
-        }
-        private void btn_varostorles_Click(object sender, RoutedEventArgs e)
-        {
-            string city = cb_varostorles.Text;
-            var command = Connection.OpenConnection().CreateCommand();
-            command.CommandType = CommandType.Text;
-            command.CommandText = "DELETE FROM cities WHERE cities.Name = @name";
-
-            var param = command.CreateParameter();
-            param.ParameterName = "@name";
-            param.Value = city;
-            command.Parameters.Add(param);
-            command.ExecuteNonQuery();
-        }
-
-        private void btn_jaratokmegjelenit_Click(object sender, RoutedEventArgs e)
-        {
-            List<Railway> railways = Railways();
-            dataGridJaratok.ItemsSource = railways;
-            dataGridJaratok.Visibility = Visibility.Visible;
-
-        }
-        private void btn_jarathozzaad_Click(object sender, RoutedEventArgs e)
-        {
-            string cityfrom = cb_ujjaratfrom.Text;
-            string cityto = cb_ujjaratto.Text;
-            int fromid = Cities().First(x => x.Name == cityfrom).ID;
-            int toid = Cities().First(x => x.Name == cityto).ID;
-            int km = int.Parse(tb_ujjaratkm.Text);
-            var command = Connection.OpenConnection().CreateCommand();
-            command.CommandType = CommandType.Text;
-            command.CommandText = "INSERT INTO railways(FromID, ToID, Km) VALUES(@from, @to, @km)";
-
-            var param1 = command.CreateParameter();
-            param1.ParameterName = "@from";
-            param1.Value = fromid;
-            command.Parameters.Add(param1);
-
-            var param2 = command.CreateParameter();
-            param2.ParameterName = "@to";
-            param2.Value = toid;
-            command.Parameters.Add(param2);
-
-            var param3 = command.CreateParameter();
-            param3.ParameterName = "@km";
-            param3.Value = km;
-            command.Parameters.Add(param3);
-
-            command.ExecuteNonQuery();
-        }
-        private void btn_jarattorles_Click(object sender, RoutedEventArgs e)
-        {
-            string cityfrom = cb_jarattorlesfrom.Text;
-            string cityto = cb_jarattorlesto.Text;
-            int fromid = Cities().First(x => x.Name == cityfrom).ID;
-            int toid = Cities().First(x => x.Name == cityto).ID;
-            var command = Connection.OpenConnection().CreateCommand();
-            command.CommandType = CommandType.Text;
-            command.CommandText = "DELETE FROM railways WHERE (railways.FromID = @from AND railways.ToID = @to)";
-
-            var param1 = command.CreateParameter();
-            param1.ParameterName = "@from";
-            param1.Value = fromid;
-            command.Parameters.Add(param1);
-
-            var param2 = command.CreateParameter();
-            param2.ParameterName = "@to";
-            param2.Value = toid;
-            command.Parameters.Add(param2);
-
-            command.ExecuteNonQuery();
-        }
-        private void btn_kilep_Click(object sender, RoutedEventArgs e)
-        {
-            AdminLogin adminLogin = new AdminLogin();
-            this.Close();
-            adminLogin.Show();
         }
     }
 }

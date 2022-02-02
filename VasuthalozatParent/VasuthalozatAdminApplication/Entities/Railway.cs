@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace VasuthalozatAdminApplication.Entities
 {
-    public class Railway
+    public class Railway : AbstractEntity
     {
         static int IdGenerator = 0;
-        public int ID { get; set; }
 
         public int FromID { get; set; }
         public int ToID { get; set; }

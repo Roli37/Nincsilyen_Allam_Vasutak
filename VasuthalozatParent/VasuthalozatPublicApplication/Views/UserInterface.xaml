@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VasuthalozatPublicApplication.Views"
+        xmlns:model="clr-namespace:VasuthalozatPublicApplication.Models"
         mc:Ignorable="d"
-        Title="UserInterface" Height="400" Width="800">
+        Title="UserInterface" Height="300" Width="800">
+    <Window.DataContext>
+        <model:UserInterfaceViewModel />
+    </Window.DataContext>
     <StackPanel>
         <Label Content="Üdvözlünk!" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Name="label1"/>
         <Grid Margin="10">

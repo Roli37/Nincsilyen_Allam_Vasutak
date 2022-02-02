@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using VasuthalozatPublicApplication.Entities;
 
-namespace VasuthalozatPublicApplication.Entities
+namespace VasuthalozatPublicApplication.Database
 {
     public class ReadFiles
     {

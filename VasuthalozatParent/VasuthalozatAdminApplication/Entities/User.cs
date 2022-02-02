@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace VasuthalozatAdminApplication.Entities
 {
-    public class User
+    public class User : AbstractEntity
     {
         static int IdGenerator = 0;
-        public int ID { get; set; }
 
         private string _name;
         [Required]

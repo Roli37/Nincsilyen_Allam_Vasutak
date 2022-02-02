@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using VasuthalozatPublicApplication.Views;
 
 namespace VasuthalozatPublicApplication.Models
 {
-    class UserInterfaceViewModel
+    public class UserInterfaceViewModel
     {
+        public static void LogOut(UserInterface userInterface)
+        {
+            LogIn logIn = new LogIn();
+            userInterface.Close();
+            logIn.Show();
+        }
     }
 }

@@ -2,17 +2,16 @@
 using MySqlConnector;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using VasuthalozatPublicApplication.Entities;
 
-namespace VasuthalozatPublicApplication.Entities
+namespace VasuthalozatPublicApplication.Database
 {
     public class VasutContext : DbContext
     {
         public DbSet<City> Cities { get; set; }
         public DbSet<Railway> Railways { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Foglalas> Foglalasok { get; set; }
 
         //public VasutContext(DbContextOptions<VasutContext> options) : base(options)
         //{
@@ -23,6 +22,8 @@ namespace VasuthalozatPublicApplication.Entities
         {
             modelBuilder.Entity<Railway>().HasOne(x => x.From);
             modelBuilder.Entity<Railway>().HasOne(x => x.To);
+            modelBuilder.Entity<Foglalas>().HasOne(x => x.User);
+            modelBuilder.Entity<Foglalas>().HasOne(x => x.Railway);
 
             List<City> cities = ReadFiles.ReadCities();
             foreach (City city in cities)

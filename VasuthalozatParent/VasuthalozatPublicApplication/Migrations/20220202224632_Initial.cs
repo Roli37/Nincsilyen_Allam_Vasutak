@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VasuthalozatPublicApplication.Migrations
 {
-    public partial class Initial_Migration : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -65,6 +65,33 @@ namespace VasuthalozatPublicApplication.Migrations
                         name: "FK_Railways_Cities_ToID",
                         column: x => x.ToID,
                         principalTable: "Cities",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Foglalasok",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserID = table.Column<int>(type: "int", nullable: false),
+                    RailwayID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Foglalasok", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Foglalasok_Railways_RailwayID",
+                        column: x => x.RailwayID,
+                        principalTable: "Railways",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Foglalasok_Users_UserID",
+                        column: x => x.UserID,
+                        principalTable: "Users",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -195,6 +222,16 @@ namespace VasuthalozatPublicApplication.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Foglalasok_RailwayID",
+                table: "Foglalasok",
+                column: "RailwayID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Foglalasok_UserID",
+                table: "Foglalasok",
+                column: "UserID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Railways_FromID",
                 table: "Railways",
                 column: "FromID");
@@ -207,6 +244,9 @@ namespace VasuthalozatPublicApplication.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Foglalasok");
+
             migrationBuilder.DropTable(
                 name: "Railways");
 

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:VasuthalozatAdminApplication.Views"
         xmlns:model="clr-namespace:VasuthalozatAdminApplication.Models"
         mc:Ignorable="d"
-        Title="AdminInterface" Height="480" Width="800">
+        Title="AdminInterface" Height="520" Width="1000">
     <Window.DataContext>
         <model:AdminInterfaceViewModel />
     </Window.DataContext>
@@ -16,13 +16,13 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="10" />
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
-                <Button Click="btn_varosmegjelenit_Click" Content="Városok megjelenítése" Name="btn_varosmegjelenit" Height="70" Margin="5" Background="Silver"/>
-                <StackPanel Height="auto" Margin="5" Background="Gray">
+                <Button Click="btn_varosmegjelenit_Click" Content="Városok megjelenítése" Name="btn_varosmegjelenit" Height="70" Margin="5" Background="Gainsboro"/>
+                <StackPanel Height="auto" Margin="5, 10" Background="Silver">
                     <Label Content="Új város felvétele" HorizontalAlignment="Center" FontWeight="Bold"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -33,9 +33,9 @@
                         <Label Grid.Column="0" Content="Város neve:" Margin="2"/>
                         <TextBox Grid.Column="2" Margin="2" Name="tb_varosfelvetel"/>
                     </Grid>
-                    <Button Click="btn_varoshozzaad_Click" Content="Hozzáad" Name="btn_varoshozzaad" Background="DimGray"/>
+                    <Button Click="btn_varoshozzaad_Click" Content="Hozzáad" Name="btn_varoshozzaad" Background="DarkGray"/>
                 </StackPanel>
-                <StackPanel Height="auto" Margin="5" Background="Gray">
+                <StackPanel Height="auto" Margin="5, 10" Background="DarkGray">
                     <Label Content="Város módosítása" HorizontalAlignment="Center" FontWeight="Bold"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -53,9 +53,9 @@
                         <Label Grid.Column="0" Grid.Row="2" Content="Város új neve:" Margin="2"/>
                         <TextBox Grid.Column="2" Grid.Row="2" Margin="2" Name="tb_varosujnev"/>
                     </Grid>
-                    <Button Click="btn_varosmodosit_Click" Content="Módosít" Name="btn_varosmodosit" Background="DimGray"/>
+                    <Button Click="btn_varosmodosit_Click" Content="Módosít" Name="btn_varosmodosit" Background="Gray"/>
                 </StackPanel>
-                <StackPanel Height="auto" Margin="5" Background="Gray">
+                <StackPanel Height="auto" Margin="5, 10" Background="Gray">
                     <Label Content="Város törlése" HorizontalAlignment="Center" FontWeight="Bold"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -70,8 +70,8 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Grid.Column="4">
-                <Button Click="btn_jaratokmegjelenit_Click" Content="Járatok megjelenítése" Name="btn_jaratokmegjelenit" Height="70" Margin="5" Background="Silver"/>
-                <StackPanel Height="auto" Margin="5" Background="Gray">
+                <Button Click="btn_jaratokmegjelenit_Click" Content="Járatok megjelenítése" Name="btn_jaratokmegjelenit" Height="70" Margin="5" Background="Gainsboro"/>
+                <StackPanel Height="auto" Margin="5" Background="Silver">
                     <Label Content="Új járat felvétele" HorizontalAlignment="Center" FontWeight="Bold"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -93,9 +93,9 @@
                         <Label Grid.Column="0" Grid.Row="4" Content="Km?" Margin="2"/>
                         <TextBox Grid.Column="2" Grid.Row="4" Margin="2" Name="tb_ujjaratkm"/>
                     </Grid>
-                    <Button Click="btn_jarathozzaad_Click" Content="Hozzáad" Name="btn_jarathozzaad" Background="DimGray"/>
+                    <Button Click="btn_jarathozzaad_Click" Content="Hozzáad" Name="btn_jarathozzaad" Background="DarkGray"/>
                 </StackPanel>
-                <StackPanel Height="auto" Margin="5" Background="Gray">
+                <StackPanel Height="auto" Margin="5" Background="DarkGray">
                     <Label Content="Járat törlése" HorizontalAlignment="Center" FontWeight="Bold"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -113,9 +113,9 @@
                         <Label Grid.Column="0" Grid.Row="2" Content="Hova?" Margin="2"/>
                         <ComboBox Grid.Column="2" Grid.Row="2" Margin="2" Name="cb_jarattorlesto"/>
                     </Grid>
-                    <Button Click="btn_jarattorles_Click" Content="Töröl" Name="btn_jarattorles" Background="DimGray"/>
+                    <Button Click="btn_jarattorles_Click" Content="Töröl" Name="btn_jarattorles" Background="Gray"/>
                 </StackPanel>
-                <Button Click="btn_kilep_Click" Content="Kilépés" Name="btn_kilep" Height="35" Margin="5" Background="Silver"/>
+                <Button Click="btn_kilep_Click" Content="Kilépés" Name="btn_kilep" Height="35" Margin="5" Background="Gray"/>
             </StackPanel>
             <Grid Grid.Column="2">
                 <DataGrid Visibility="Hidden" AutoGenerateColumns="False" CanUserAddRows="False" Name="dataGridVarosok" MaxHeight="330"  VerticalScrollBarVisibility="Auto">
@@ -128,10 +128,10 @@
             <Grid Grid.Column="2">
                 <DataGrid Visibility="Hidden" AutoGenerateColumns="False" CanUserAddRows="False" Name="dataGridJaratok" MaxHeight="330"  VerticalScrollBarVisibility="Auto">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Honnan" Binding="{Binding ID}" Width="*"/>
+                        <DataGridTextColumn Header="Honnan" Binding="{Binding ID}" Width="30"/>
                         <DataGridTextColumn Header="Honnan" Binding="{Binding From.Name}" Width="*"/>
                         <DataGridTextColumn Header="Hova" Binding="{Binding To.Name}" Width="*"/>
-                        <DataGridTextColumn Header="Km" Binding="{Binding Km}" Width="*"/>
+                        <DataGridTextColumn Header="Km" Binding="{Binding Km}" Width="30"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
