@@ -128,7 +128,7 @@
             <Grid Grid.Column="2">
                 <DataGrid Visibility="Hidden" AutoGenerateColumns="False" CanUserAddRows="False" Name="dataGridJaratok" MaxHeight="330"  VerticalScrollBarVisibility="Auto">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Honnan" Binding="{Binding ID}" Width="30"/>
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="30"/>
                         <DataGridTextColumn Header="Honnan" Binding="{Binding From.Name}" Width="*"/>
                         <DataGridTextColumn Header="Hova" Binding="{Binding To.Name}" Width="*"/>
                         <DataGridTextColumn Header="Km" Binding="{Binding Km}" Width="30"/>

@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Windows;
+using VasuthalozatPublicApplication.Algorithms;
 using VasuthalozatPublicApplication.Database;
 using VasuthalozatPublicApplication.Views;
 
@@ -11,6 +12,7 @@ namespace VasuthalozatPublicApplication.Models
         {
             if (password == passwordconf)
             {
+                password = PasswordHash.Hash(password);
                 using (var command = Connection.OpenConnection().CreateCommand())
                 {
                     command.CommandType = CommandType.Text;

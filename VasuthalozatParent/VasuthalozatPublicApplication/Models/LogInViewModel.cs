@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Windows;
+using VasuthalozatPublicApplication.Algorithms;
 using VasuthalozatPublicApplication.Database;
 using VasuthalozatPublicApplication.Views;
 
@@ -23,6 +24,7 @@ namespace VasuthalozatPublicApplication.Models
                 {
                     if (reader.Read())
                     {
+                        password = PasswordHash.Hash(password);
                         if ((string)reader["Password"] == password)
                         {
                             UserInterface userInterface = new UserInterface();
