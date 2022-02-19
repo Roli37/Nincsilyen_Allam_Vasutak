@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:VasuthalozatAdminApplication.Views"
         xmlns:model="clr-namespace:VasuthalozatAdminApplication.Models"
         mc:Ignorable="d"
-        Title="AdminInterface" Height="520" Width="1000">
+        Title="AdminInterface" Height="550" Width="1000">
     <Window.DataContext>
         <model:AdminInterfaceViewModel />
     </Window.DataContext>
@@ -22,7 +22,7 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
                 <Button Click="btn_varosmegjelenit_Click" Content="Városok megjelenítése" Name="btn_varosmegjelenit" Height="70" Margin="5" Background="Gainsboro"/>
-                <StackPanel Height="auto" Margin="5, 10" Background="Silver">
+                <StackPanel Height="auto" Margin="5" Background="Silver">
                     <Label Content="Új város felvétele" HorizontalAlignment="Center" FontWeight="Bold"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -35,7 +35,7 @@
                     </Grid>
                     <Button Click="btn_varoshozzaad_Click" Content="Hozzáad" Name="btn_varoshozzaad" Background="DarkGray"/>
                 </StackPanel>
-                <StackPanel Height="auto" Margin="5, 10" Background="DarkGray">
+                <StackPanel Height="auto" Margin="5" Background="DarkGray">
                     <Label Content="Város módosítása" HorizontalAlignment="Center" FontWeight="Bold"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -55,7 +55,7 @@
                     </Grid>
                     <Button Click="btn_varosmodosit_Click" Content="Módosít" Name="btn_varosmodosit" Background="Gray"/>
                 </StackPanel>
-                <StackPanel Height="auto" Margin="5, 10" Background="Gray">
+                <StackPanel Height="auto" Margin="5" Background="Gray">
                     <Label Content="Város törlése" HorizontalAlignment="Center" FontWeight="Bold"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -68,10 +68,11 @@
                     </Grid>
                     <Button Click="btn_varostorles_Click" Content="Töröl" Name="btn_varostorles" Background="DimGray"/>
                 </StackPanel>
+                <Button Content="Kruskal" Name="btn_kruskal" Background="DimGray" Margin="5" Height="35" Click="btn_kruskal_Click"/>
             </StackPanel>
             <StackPanel Grid.Column="4">
                 <Button Click="btn_jaratokmegjelenit_Click" Content="Járatok megjelenítése" Name="btn_jaratokmegjelenit" Height="70" Margin="5" Background="Gainsboro"/>
-                <StackPanel Height="auto" Margin="5" Background="Silver">
+                <StackPanel Height="auto" Margin="5, 10" Background="Silver">
                     <Label Content="Új járat felvétele" HorizontalAlignment="Center" FontWeight="Bold"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -118,20 +119,30 @@
                 <Button Click="btn_kilep_Click" Content="Kilépés" Name="btn_kilep" Height="35" Margin="5" Background="Gray"/>
             </StackPanel>
             <Grid Grid.Column="2">
-                <DataGrid Visibility="Hidden" AutoGenerateColumns="False" CanUserAddRows="False" Name="dataGridVarosok" MaxHeight="330"  VerticalScrollBarVisibility="Auto">
+                <DataGrid Visibility="Hidden" AutoGenerateColumns="False" CanUserAddRows="False" Name="dataGridVarosok" MaxHeight="400"  VerticalScrollBarVisibility="Auto">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="30"/>
-                        <DataGridTextColumn Header="Városok" Binding="{Binding Name}" Width="*"/>
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="1*"/>
+                        <DataGridTextColumn Header="Városok" Binding="{Binding Name}" Width="3*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
             <Grid Grid.Column="2">
-                <DataGrid Visibility="Hidden" AutoGenerateColumns="False" CanUserAddRows="False" Name="dataGridJaratok" MaxHeight="330"  VerticalScrollBarVisibility="Auto">
+                <DataGrid Visibility="Hidden" AutoGenerateColumns="False" CanUserAddRows="False" Name="dataGridJaratok" MaxHeight="400"  VerticalScrollBarVisibility="Auto">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="30"/>
-                        <DataGridTextColumn Header="Honnan" Binding="{Binding From.Name}" Width="*"/>
-                        <DataGridTextColumn Header="Hova" Binding="{Binding To.Name}" Width="*"/>
-                        <DataGridTextColumn Header="Km" Binding="{Binding Km}" Width="30"/>
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="1*"/>
+                        <DataGridTextColumn Header="Honnan" Binding="{Binding From.Name}" Width="2*"/>
+                        <DataGridTextColumn Header="Hova" Binding="{Binding To.Name}" Width="2*"/>
+                        <DataGridTextColumn Header="Km" Binding="{Binding Km}" Width="1*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <Grid Grid.Column="2">
+                <DataGrid Visibility="Hidden" AutoGenerateColumns="False" CanUserAddRows="False" Name="dataGridKruskal" MaxHeight="400" VerticalScrollBarVisibility="Auto">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="1*"/>
+                        <DataGridTextColumn Header="Honnan" Binding="{Binding From.Name}" Width="2*"/>
+                        <DataGridTextColumn Header="Hova" Binding="{Binding To.Name}" Width="2*"/>
+                        <DataGridTextColumn Header="Km" Binding="{Binding Km}" Width="1*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

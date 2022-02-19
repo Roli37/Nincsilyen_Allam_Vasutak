@@ -7,11 +7,13 @@ namespace VasuthalozatAdminApplication.Database
     {
         public static IDbConnection OpenConnection()
         {
-            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-            builder.Server = "localhost";
-            builder.UserID = "root";
-            builder.Database = "railway_project";
-            builder.Password = "";
+            MySqlConnectionStringBuilder builder = new()
+            {
+                Server = "localhost",
+                UserID = "root",
+                Database = "railway_project",
+                Password = ""
+            };
             IDbConnection connection = new MySqlConnection(builder.ConnectionString);
             connection.Open();
             return connection;

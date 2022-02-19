@@ -18,10 +18,6 @@ namespace VasuthalozatAdminApplication.Views
             InitializeComponent();
             DataSources();
         }
-        public AdminInterface(VasutContext vasutContext)
-        {
-            _vasutContext = vasutContext;
-        }
 
         private readonly VasutContext _vasutContext = new VasutContext();
 
@@ -30,6 +26,7 @@ namespace VasuthalozatAdminApplication.Views
             dataGridVarosok.ItemsSource = Cities();
             dataGridVarosok.Visibility = Visibility.Visible;
             dataGridJaratok.Visibility = Visibility.Hidden;
+            dataGridKruskal.Visibility = Visibility.Hidden;
         }
         private void btn_varoshozzaad_Click(object sender, RoutedEventArgs e)
         {
@@ -47,6 +44,14 @@ namespace VasuthalozatAdminApplication.Views
             string city = cb_varostorles.Text;
             AdminInterfaceViewModel.DeleteVaros(city, Cities());
         }
+        private void btn_kruskal_Click(object sender, RoutedEventArgs e)
+        {
+            List<Railway> MST = AdminInterfaceViewModel.Kruskal(Cities(), Railways());
+            dataGridKruskal.ItemsSource = MST;
+            dataGridKruskal.Visibility = Visibility.Visible;
+            dataGridJaratok.Visibility = Visibility.Hidden;
+            dataGridVarosok.Visibility = Visibility.Hidden;
+        }
 
         private void btn_jaratokmegjelenit_Click(object sender, RoutedEventArgs e)
         {
@@ -54,6 +59,7 @@ namespace VasuthalozatAdminApplication.Views
             dataGridJaratok.ItemsSource = railways;
             dataGridJaratok.Visibility = Visibility.Visible;
             dataGridVarosok.Visibility = Visibility.Hidden;
+            dataGridKruskal.Visibility = Visibility.Hidden;
 
         }
         private void btn_jarathozzaad_Click(object sender, RoutedEventArgs e)
@@ -74,7 +80,7 @@ namespace VasuthalozatAdminApplication.Views
         {
             AdminInterfaceViewModel.LogOut(this);
         }
-        public void DataSources()
+        private void DataSources()
         {
             cb_varosreginev.ItemsSource = Cities().Select(x => x.Name);
             cb_varostorles.ItemsSource = Cities().Select(x => x.Name);
@@ -86,44 +92,14 @@ namespace VasuthalozatAdminApplication.Views
 
         public List<City> Cities()
         {
-            //var command = Connection.OpenConnection().CreateCommand();
-            //command.CommandType = CommandType.Text;
-            //command.CommandText = "SELECT * FROM `cities`";
-            //var reader = command.ExecuteReader();
-            //List<City> cities = new List<City>();
-            //while (reader.Read())
-            //{
-            //    City city = new City()
-            //    {
-            //        ID = int.Parse(reader["ID"].ToString()),
-            //        Name = (string)reader["Name"]
-            //    };
-            //    cities.Add(city);
-            //}
             List<City> cities = _vasutContext.Cities.ToList();
             return cities;
         }
         public List<Railway> Railways()
         {
-            //var command = Connection.OpenConnection().CreateCommand();
-            //command.CommandType = CommandType.Text;
-            //command.CommandText = "SELECT * FROM `railways`";
-            //var reader = command.ExecuteReader();
-            //List<Railway> railways = new List<Railway>();
-            //while (reader.Read())
-            //{
-            //    Railway railway = new Railway()
-            //    {
-            //        ID = int.Parse(reader["ID"].ToString()),
-            //        //FromID = int.Parse(reader["FromID"].ToString()),
-            //        From = Cities().First(x => x.ID == int.Parse(reader["FromID"].ToString())),
-            //        To = Cities().First(x => x.ID == int.Parse(reader["ToID"].ToString())),
-            //        Km = int.Parse(reader["Km"].ToString())
-            //    };
-            //    railways.Add(railway);
-            //}
             List<Railway> railways = _vasutContext.Railways.ToList();
             return railways;
         }
+
     }
 }

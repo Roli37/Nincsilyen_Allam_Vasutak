@@ -13,12 +13,14 @@ namespace VasuthalozatAdminApplication.Database
         public DbSet<Foglalas> Foglalasok { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-            builder.UserID = "root";
-            builder.Password = "";
-            builder.Server = "localhost";
-            builder.Port = 3306;
-            builder.Database = "railway_project";
+            MySqlConnectionStringBuilder builder = new()
+            {
+                UserID = "root",
+                Password = "",
+                Server = "localhost",
+                Port = 3306,
+                Database = "railway_project"
+            };
 
             optionsBuilder.UseMySql(
                 builder.ConnectionString,

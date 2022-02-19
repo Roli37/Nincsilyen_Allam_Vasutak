@@ -46,7 +46,7 @@
                 <Button Click="btn_logout_Click" Content="Kijelentkezés" Name="btn_logout" Height="70" Margin="5" Background="Silver"/>
             </StackPanel>
             <Grid Grid.Column="2">
-                <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" Name="dataGrid1" MaxHeight="330"  VerticalScrollBarVisibility="Auto">
+                <DataGrid Visibility="Hidden" AutoGenerateColumns="False" CanUserAddRows="False" Name="dataGrid1" MaxHeight="330"  VerticalScrollBarVisibility="Auto">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Valami1" Binding="{Binding}" Width="*"/>
                         <DataGridTextColumn Header="Valami2" Binding="{Binding}" Width="auto"/>

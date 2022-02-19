@@ -63,6 +63,11 @@ namespace VasuthalozatAdminApplication.Models
             command2.Parameters.Add(param2);
             command2.ExecuteNonQuery();
         }
+        public static List<Railway> Kruskal(List<City> cities, List<Railway> railways)
+        {
+            List<Railway> MST = Algorithms.Kruskal.KruskalAlgSecondTry(cities, railways);
+            return MST;
+        }
         public static void PostJarat(string cityfrom, string cityto, int km, List<City> cities)
         {
             int fromid = cities.First(x => x.Name == cityfrom).ID;

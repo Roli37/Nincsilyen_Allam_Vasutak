@@ -8,7 +8,7 @@ using VasuthalozatPublicApplication.Database;
 namespace VasuthalozatPublicApplication.Migrations
 {
     [DbContext(typeof(VasutContext))]
-    [Migration("20220203141530_Initial")]
+    [Migration("20220219201800_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

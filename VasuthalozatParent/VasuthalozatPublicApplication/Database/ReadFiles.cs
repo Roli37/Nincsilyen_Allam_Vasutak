@@ -10,7 +10,7 @@ namespace VasuthalozatPublicApplication.Database
         public static List<City> ReadCities()
         {
             List<City> cities = new List<City>();
-            using (var sr = new StreamReader("Files/cities.txt"))
+            using (var sr = new StreamReader("cities.txt"))
             {
                 string sor;
                 while ((sor = sr.ReadLine()) != null)
@@ -24,7 +24,7 @@ namespace VasuthalozatPublicApplication.Database
         public static List<Railway> ReadRailways(IEnumerable<City> cities)
         {
             List<Railway> railways = new List<Railway>();
-            using (var sr = new StreamReader("Files/railways.txt"))
+            using (var sr = new StreamReader("railways.txt"))
             {
                 string sor;
                 while ((sor = sr.ReadLine()) != null)

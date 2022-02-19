@@ -13,11 +13,6 @@ namespace VasuthalozatPublicApplication.Database
         public DbSet<User> Users { get; set; }
         public DbSet<Foglalas> Foglalasok { get; set; }
 
-        //public VasutContext(DbContextOptions<VasutContext> options) : base(options)
-        //{
-        //    Database.EnsureCreated();
-        //}
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Railway>().HasOne(x => x.From);
