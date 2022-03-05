@@ -32,6 +32,14 @@ namespace VasuthalozatPublicApplication.Views
             {
                 List<List<City>> BFS = UserInterfaceViewModel.Kereses(Cities(), Railways(), cb_from.Text, cb_to.Text);
                 dataGrid1.Visibility = Visibility.Visible;
+                dataGrid1.Items.Clear();
+                List<City> first = BFS.First();
+                string result = "";
+                foreach (City city in first)
+                {
+                    result += city.Name + " -> ";
+                }
+                dataGrid1.Items.Add(result.Substring(0, result.Length - 4));
             }
         }
 

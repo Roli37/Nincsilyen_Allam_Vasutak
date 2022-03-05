@@ -48,10 +48,7 @@
             <Grid Grid.Column="2">
                 <DataGrid Visibility="Hidden" AutoGenerateColumns="False" CanUserAddRows="False" Name="dataGrid1" MaxHeight="330"  VerticalScrollBarVisibility="Auto">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Valami1" Binding="{Binding}" Width="*"/>
-                        <DataGridTextColumn Header="Valami2" Binding="{Binding}" Width="auto"/>
-                        <DataGridTextColumn Header="Valami3" Binding="{Binding}" Width="*"/>
-                        <DataGridTextColumn Header="Valami4" Binding="{Binding}" Width="auto"/>
+                        <DataGridTextColumn Header="Útvonal" Binding="{Binding}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
